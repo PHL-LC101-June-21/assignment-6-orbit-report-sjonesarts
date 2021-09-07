@@ -42,24 +42,17 @@ export class AppComponent {
 		searchTerm = searchTerm.toLowerCase();
 		for(let i=0; i < this.sourceList.length; i++) {
 			let name = this.sourceList[i].name.toLowerCase();
+			let orbType = this.sourceList[i].orbitType.toLowerCase();
+			let type = this.sourceList[i].type.toLowerCase();
 			if (name.indexOf(searchTerm) >= 0) {
 				matchingSatellites.push(this.sourceList[i]);
-			}
-		}
-
-		for(let i=0; i <this.sourceList.length; i++){
-			let orbType = this.sourceList[i].orbitType.toLowerCase();
-			if (orbType.indexOf(searchTerm) >= 0) {
+			} else if (orbType.indexOf(searchTerm) >= 0) {
+				matchingSatellites.push(this.sourceList[i]);
+			} else if (type.indexOf(searchTerm) >= 0) {
 				matchingSatellites.push(this.sourceList[i]);
 			}
 		}
 
-		for(let i=0; i <this.sourceList.length; i++){
-			let type = this.sourceList[i].type.toLowerCase();
-			if (type.indexOf(searchTerm) >= 0) {
-				matchingSatellites.push(this.sourceList[i]);
-			}
-		}
 		
 		
 		// assign this.displayList to be the array of matching satellites
